@@ -23,7 +23,7 @@ const fetchApi = async (url, query) => {
 const setData = async (url, query) => {
     // Set dummy data on page load
     url = url ? url : 'http://api.weatherapi.com/v1/current.json';
-    query = query ? query : 'Sao Paulo';
+    query = query ? query : 'Yakutsk';
 
     const data = await fetchApi(url, query);
 
@@ -99,9 +99,8 @@ const setForecastData = (data) => {
     daysDiv.innerHTML = '';
 
     const optionsday = { weekday: 'long' }; // Format for full weekday name
-    data.forecast.forecastday.forEach((day) => {
+    data.forecast.forecastday.forEach((day, index) => {
         const date = new Date(day.date);
-
         daysDiv.innerHTML += `
             <div class="column rounded">
                 <div class="date py-2">
@@ -116,9 +115,56 @@ const setForecastData = (data) => {
                 </div>
             </div>
         `;
+
     });
+
+
+    const allDays = document.querySelectorAll('.column');
+    allDays.forEach((item, i) => {
+        allDays[i].addEventListener('click', () => {
+            forecastEl.classList.toggle('showForecastGraph')
+            showDetailedForecast(data.forecast.forecastday[i].hour)
+        })
+    })
 };
 
+const forecastEl = document.querySelector('.graph_visualizer')
 
+
+
+const showDetailedForecast = (day) => {
+    console.log(day)
+    let temps = [];
+    let hours = [];
+    day.forEach((item, i) => {
+        temps.push(`${options.units === 'EU' ? item.temp_c : item.temp_f}`)
+        hours.push(formatEpochToTime(day[i].time_epoch))
+    })
+    console.log(temps)
+    const ctx = document.getElementById('myChart');
+    const a = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: hours,
+            datasets: [{
+                label: `${options.units === 'EU' ? "Temperature (°C)" : "Temperature (°F)"}`,
+                data: temps,
+                borderWidth: 4,
+                responsive: true,
+                tension: .25,
+                borderColor: 'rgb(163, 30, 41)',
+            }]
+        }
+    });
+    const chartClose = document.getElementById('closeChart')
+    chartClose.addEventListener('click', () => {
+        a.destroy();
+        forecastEl.classList.remove('showForecastGraph')
+    })
+}
+function formatEpochToTime(epochSeconds) {
+    const date = new Date(epochSeconds * 1000); // Convert seconds to milliseconds
+    return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+}
 
 setData()
