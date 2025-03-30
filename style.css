@@ -1,0 +1,153 @@
+body {
+    font-family: 'Segoe UI';
+    background: #1D3557;
+}
+
+.container {
+    padding: 30px;
+    margin: 150px auto 5px auto;
+    max-width: 35%;
+    border: 1px solid #000;
+    color: #000;
+    background: #fff;
+}
+
+@media (max-width:767px) {
+    .container {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width:1800px) {
+    .container {
+        margin: 0 auto;
+        max-width: 55%;
+    }
+}
+
+#location-name {
+    font-size: 36px;
+    font-weight: bolder;
+    color: #a31e29;
+
+}
+
+#timezone {
+    font-weight: bold;
+}
+
+#weather-info>#temperature-img>img {
+    width: 100px;
+}
+
+#temperature {
+    font-size: 20px;
+    text-align: right;
+}
+
+#detailedForLocation {
+    font-size: 24px;
+}
+
+#information-wrapper {
+    line-height: 2;
+}
+
+#search.form-control {
+    padding: 15px;
+    width: 700px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    background: #A8DADC;
+}
+
+#search::placeholder {
+    font-size: 16px;
+    color: #000;
+}
+
+#suggestions {
+    position: absolute;
+    padding: 20px 20px;
+    width: 700px;
+    height: relative;
+    background: #457B9D;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+
+}
+
+svg {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.a_suggestion {
+    color: #fdf0d5;
+}
+
+li {
+    list-style-type: none;
+    margin: 0 0 20px auto;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+button {
+    padding: 10px;
+    width: 30%;
+    border-radius: 5px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+#days {
+    display: flex;
+    gap: 5px;
+}
+
+#days>.column {
+    width: 14.1%;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.temp_icon img {
+    margin: 0 auto;
+}
+
+#weather-forecast>h3 {
+    color: #a31e29;
+}
+
+#navbar>.container-fluid {
+    background: #a31e29;
+}
+
+.temp_icon h3 {
+    color: #a31e29;
+}
