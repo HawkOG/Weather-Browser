@@ -29,10 +29,7 @@
             </ul>
         </div>
         <div class="container shadow">
-
             <!-- <button onClick="setUnits()">Switch units</button> -->
-
-
             <div class="location-info">
                 <span id="location-name"></span>
                 <p id="timezone"></p>
@@ -46,14 +43,26 @@
             <hr>
             <div id="weather-forecast">
                 <h3 class="my-4">Weather forecast for 7 days</h3>
-                <div id="days">
-                    <!-- DYNAMIC -->
-                </div>
+            </div>
+            <div id="days">
+                <!-- DYNAMIC -->
             </div>
         </div>
     </div>
+    </div>
 
+    <div class="container graph_visualizer border">
+        <div id="wrapper" class="d-flex justify-content-between">
+            <div class="align-center fs-4 my-0">24 hour weather forecast</div>
+            <button id="closeChart" class="btn btn-outline-danger">Close</button>
+        </div>
+        <div id="fcs">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
 </body>
-<script src="./script.js"></script>
 
 </html>
